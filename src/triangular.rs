@@ -4,9 +4,10 @@ use std::ops::Div;
 
 #[path = "progress.rs"]
 mod progress;
+use progress::Progress;
 
 pub fn calculate(limit: u64) {
-	let bar = progress::get_bar(limit);
+	let progress = Progress::new(limit);
 
 	for n in 0..limit {
 		let i = BigUint::from(n);
@@ -14,8 +15,8 @@ pub fn calculate(limit: u64) {
 		let result = i * &j;
 		println!("{}", result.div(2 as u8));
 
-		bar.inc(1);
+		progress.inc();
 	}
 
-	bar.finish();
+	progress.finish();
 }

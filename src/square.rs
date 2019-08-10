@@ -4,15 +4,15 @@ use num_traits::pow::Pow;
 
 #[path = "progress.rs"]
 mod progress;
+use progress::Progress;
 
 pub fn calculate(limit: u64) {
-	let bar = progress::get_bar(limit);
-
+	let progress = Progress::new(limit);
 	let power: u8 = 2;
 	for i in 0..limit {
 		println!("{}", BigUint::from(i).pow(power));
-		bar.inc(1);
+		progress.inc();
 	}
 
-	bar.finish();
+	progress.finish();
 }

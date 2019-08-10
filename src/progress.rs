@@ -1,8 +1,25 @@
-use indicatif::{ProgressBar, ProgressDrawTarget};
+use indicatif::{HumanDuration, ProgressBar, ProgressDrawTarget};
+use std::time::Instant;
 
-pub fn get_bar(limit: u64) -> ProgressBar {
-	let bar = ProgressBar::with_draw_target(limit, ProgressDrawTarget::stderr());
-	bar.println(format!("Generating {} numbers", limit));
+pub struct Progress {
+	bar: ProgressBar,
+	begin: Instant,
+}
 
-	bar
+impl Progress {
+	pub fn new(limit: u64) -> Progress {
+		Progress {
+			bar: ProgressBar::with_draw_target(limit, ProgressDrawTarget::stderr()),
+			begin: Instant::now(),
+		}
+	}
+
+	pub fn inc(&self) {
+		self.bar.inc(1);
+	}
+
+	pub fn finish(&self) {
+		self.bar.finish();
+		eprintln!("Calculation took {}", HumanDuration(self.begin.elapsed()));
+	}
 }

@@ -5,9 +5,10 @@ use std::mem::replace;
 
 #[path = "progress.rs"]
 mod progress;
+use progress::Progress;
 
 pub fn calculate(limit: u64) {
-	let bar = progress::get_bar(limit);
+	let progress = Progress::new(limit);
 	let mut first: BigUint = Zero::zero();
 	let mut second: BigUint = One::one();
 
@@ -19,8 +20,8 @@ pub fn calculate(limit: u64) {
 		println!("{}", third);
 		first = replace(&mut second, third);
 
-		bar.inc(1);
+		progress.inc();
 	}
 
-	bar.finish();
+	progress.finish();
 }
