@@ -1,5 +1,5 @@
 extern crate clap;
-use clap::{Arg, App, SubCommand};
+use clap::{App, Arg, SubCommand};
 use std::process::exit;
 
 /* number sequences */
@@ -16,11 +16,9 @@ fn main() {
 				.long("limit")
 				.takes_value(true)
 				.index(1)
-				.help("Calculation limit")
+				.help("Calculation limit"),
 		)
-		.subcommand(SubCommand::with_name("fibonacci")
-					.about("Calculate the fibonacci sequence")
-					)
+		.subcommand(SubCommand::with_name("fibonacci").about("Calculate the fibonacci sequence"))
 		.get_matches();
 
 	let limit = match matches.value_of("limit").unwrap_or("30").parse::<u64>() {
