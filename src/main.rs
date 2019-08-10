@@ -4,6 +4,7 @@ use std::process::exit;
 
 /* number sequences */
 mod fibonacci;
+mod tribonacci;
 
 fn main() {
 	let matches = App::new("numerus")
@@ -19,6 +20,7 @@ fn main() {
 				.help("Calculation limit"),
 		)
 		.subcommand(SubCommand::with_name("fibonacci").about("Calculate the fibonacci sequence"))
+		.subcommand(SubCommand::with_name("tribonacci").about("Calculate the tribonacci sequence"))
 		.get_matches();
 
 	let limit = match matches.value_of("limit").unwrap_or("30").parse::<u64>() {
@@ -31,6 +33,7 @@ fn main() {
 
 	match matches.subcommand_name() {
 		Some("fibonacci") => fibonacci::calculate(limit),
+		Some("tribonacci") => tribonacci::calculate(limit),
 		_ => {
 			println!("Please specifiy a sequence");
 			exit(1);
