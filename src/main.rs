@@ -5,6 +5,7 @@ use std::process::exit;
 
 /* number sequences */
 mod fibonacci;
+mod pentagonal;
 mod power;
 mod triangular;
 mod tribonacci;
@@ -34,7 +35,8 @@ fn main() {
 		.subcommand(SubCommand::with_name("square").about("Calculate the square sequence"))
 		.subcommand(SubCommand::with_name("cube").about("Calculate the cube sequence"))
 		.subcommand(power_command.clone())
-		.subcommand(SubCommand::with_name("triangular").about("Calculate the triangular sequence"));
+		.subcommand(SubCommand::with_name("triangular").about("Calculate the triangular sequence"))
+		.subcommand(SubCommand::with_name("pentagonal").about("Calculate the pentagonal sequence"));
 	let matches = app.clone().get_matches();
 
 	let limit = match matches.value_of("limit").unwrap_or("30").parse::<u64>() {
@@ -51,6 +53,7 @@ fn main() {
 		Some("square") => power::calculate(limit, 2),
 		Some("cube") => power::calculate(limit, 3),
 		Some("triangular") => triangular::calculate(limit),
+		Some("pentagonal") => pentagonal::calculate(limit),
 		Some("power") => {
 			if let Some(matches) = matches.subcommand_matches("power") {
 				let power = match matches.value_of("power") {
