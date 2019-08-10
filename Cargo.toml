@@ -5,6 +5,7 @@ authors = ["J.M. Thiessen <jacob@x0rz3q.com>"]
 edition = "2018"
 
 [dependencies]
+indicatif = "0.11.0"
 num-bigint = "0.2"
 num-traits = "0.2.8"
 clap = "2.33.0"
