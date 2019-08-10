@@ -1,4 +1,4 @@
-use indicatif::{HumanDuration, ProgressBar, ProgressDrawTarget};
+use indicatif::{FormattedDuration, ProgressBar, ProgressDrawTarget};
 use std::time::Instant;
 
 pub struct Progress {
@@ -20,6 +20,9 @@ impl Progress {
 
 	pub fn finish(&self) {
 		self.bar.finish();
-		eprintln!("Calculation took {}", HumanDuration(self.begin.elapsed()));
+		eprintln!(
+			"Calculation took {}",
+			FormattedDuration(self.begin.elapsed())
+		);
 	}
 }
