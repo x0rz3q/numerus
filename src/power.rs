@@ -6,9 +6,8 @@ use num_traits::pow::Pow;
 mod progress;
 use progress::Progress;
 
-pub fn calculate(limit: u64) {
+pub fn calculate(limit: u64, power: u64) {
 	let progress = Progress::new(limit);
-	let power: u8 = 2;
 	for i in 0..limit {
 		println!("{}", BigUint::from(i).pow(power));
 		progress.inc();
