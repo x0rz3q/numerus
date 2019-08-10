@@ -1,3 +1,4 @@
+#[macro_use]
 extern crate clap;
 use clap::{App, Arg, SubCommand};
 use std::process::exit;
@@ -9,8 +10,8 @@ mod triangular;
 mod tribonacci;
 
 fn main() {
-	let matches = App::new("numerus")
-		.version("0.1.0")
+	let mut app = App::new("numerus")
+		.version(crate_version!())
 		.author("J.M. Thiessen <jacob@x0rz3q.com>")
 		.about("Calculate number sequences")
 		.arg(
@@ -24,8 +25,8 @@ fn main() {
 		.subcommand(SubCommand::with_name("fibonacci").about("Calculate the fibonacci sequence"))
 		.subcommand(SubCommand::with_name("tribonacci").about("Calculate the tribonacci sequence"))
 		.subcommand(SubCommand::with_name("square").about("Calculate the square sequence"))
-		.subcommand(SubCommand::with_name("triangular").about("Calculate the triangular sequence"))
-		.get_matches();
+		.subcommand(SubCommand::with_name("triangular").about("Calculate the triangular sequence"));
+	let matches = app.clone().get_matches();
 
 	let limit = match matches.value_of("limit").unwrap_or("30").parse::<u64>() {
 		Ok(limit) => limit,
@@ -41,8 +42,8 @@ fn main() {
 		Some("square") => square::calculate(limit),
 		Some("triangular") => triangular::calculate(limit),
 		_ => {
-			println!("Please specifiy a sequence");
-			exit(1);
+			app.print_help().unwrap();
+			println!("");
 		}
 	};
 }
