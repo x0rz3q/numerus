@@ -4,6 +4,7 @@ stages:
     - test
     - build
     - release
+    - deploy
 
 test:cargo:check:
     stage: test
