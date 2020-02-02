@@ -1,6 +1,5 @@
 extern crate num_bigint;
 use num_bigint::BigUint;
-use num_integer::Integer;
 
 use crate::{progress::Progress, sequences::Sequence};
 
