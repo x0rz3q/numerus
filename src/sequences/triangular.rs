@@ -2,9 +2,7 @@ extern crate num_bigint;
 use num_bigint::BigUint;
 use std::ops::Div;
 
-#[path = "../progress.rs"]
-mod progress;
-use progress::Progress;
+use crate::progress::Progress;
 
 pub fn calculate(limit: u64) {
 	let progress = Progress::new(limit);
