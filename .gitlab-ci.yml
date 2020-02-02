@@ -16,7 +16,7 @@ test:fmt:
     script:
         - rustup toolchain install nightly
         - rustup component add rustfmt --toolchain nightly
-        - rustfmt --check src/*.rs src/sequences/*.rs
+        - rustfmt +nightly --check src/*.rs src/sequences/*.rs
 
 build:cargo:
     stage: build
