@@ -13,12 +13,11 @@ impl Sequence for Hexagonal {
         println!("{}", 0);
         let two = BigUint::from(2 as u8);
         for i in 1..limit {
-            let two_n: BigUint = BigUint::from(i) * &two;
-            let upper: BigUint = two_n.clone() * (&two_n - (1 as u8));
+            let n = BigUint::from(i);
+            let two_n: BigUint = n.clone() * &two;
+            let result: BigUint = n * (&two_n - (1 as u8));
 
-            if upper.is_even() {
-                println!("{}", upper.div_floor(&two));
-            }
+            println!("{}", result);
         }
 
 		progress.finish();
