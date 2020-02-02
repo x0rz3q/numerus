@@ -1,14 +1,11 @@
 #[macro_use]
 extern crate clap;
+mod sequences;
+
 use clap::{App, Arg, SubCommand};
 use std::process::exit;
 
-/* number sequences */
-mod fibonacci;
-mod pentagonal;
-mod power;
-mod triangular;
-mod tribonacci;
+use sequences::{fibonacci, pentagonal, power, triangular, tribonacci};
 
 fn main() {
 	let mut power_command = SubCommand::with_name("power")
@@ -44,7 +41,7 @@ fn main() {
 		Err(_) => {
 			println!("Limit should be an integer");
 			exit(1);
-		}
+		},
 	};
 
 	match matches.subcommand_name() {
@@ -62,7 +59,7 @@ fn main() {
 						power_command.print_help().unwrap();
 						println!("");
 						exit(1);
-					}
+					},
 				};
 
 				let power = match power.parse::<u64>() {
@@ -70,15 +67,15 @@ fn main() {
 					Err(_) => {
 						println!("Power needs to be an integer");
 						exit(1);
-					}
+					},
 				};
 
 				power::calculate(limit, power);
 			}
-		}
+		},
 		_ => {
 			app.print_help().unwrap();
 			println!("");
-		}
+		},
 	};
 }

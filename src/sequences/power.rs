@@ -2,7 +2,7 @@ extern crate num_bigint;
 use num_bigint::BigUint;
 use num_traits::pow::Pow;
 
-#[path = "progress.rs"]
+#[path = "../progress.rs"]
 mod progress;
 use progress::Progress;
 

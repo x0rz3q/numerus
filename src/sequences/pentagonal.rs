@@ -1,11 +1,9 @@
 extern crate num_bigint;
 use num_bigint::BigUint;
 use num_traits::pow::Pow;
-use std::ops::Div;
-use std::ops::Mul;
-use std::ops::Sub;
+use std::ops::{Div, Mul, Sub};
 
-#[path = "progress.rs"]
+#[path = "../progress.rs"]
 mod progress;
 use progress::Progress;
 

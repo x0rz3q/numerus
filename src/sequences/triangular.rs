@@ -2,7 +2,7 @@ extern crate num_bigint;
 use num_bigint::BigUint;
 use std::ops::Div;
 
-#[path = "progress.rs"]
+#[path = "../progress.rs"]
 mod progress;
 use progress::Progress;
 
