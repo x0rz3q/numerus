@@ -8,11 +8,11 @@ use std::process::exit;
 
 use sequences::{
 	fibonacci::Fibonacci,
+	hexagonal::Hexagonal,
 	pentagonal::Pengagonal,
 	power::{Cube, Square},
 	triangular,
 	tribonacci::Tribonacci,
-	hexagonal::Hexagonal,
 	Sequence,
 };
 
