@@ -12,6 +12,7 @@ use sequences::{
 	power::{Cube, Square},
 	triangular,
 	tribonacci::Tribonacci,
+	hexagonal::Hexagonal,
 	Sequence,
 };
 
@@ -33,7 +34,8 @@ fn main() {
 		.subcommand(SubCommand::with_name("square").about("Calculate the square sequence"))
 		.subcommand(SubCommand::with_name("cube").about("Calculate the cube sequence"))
 		.subcommand(SubCommand::with_name("triangular").about("Calculate the triangular sequence"))
-		.subcommand(SubCommand::with_name("pentagonal").about("Calculate the pentagonal sequence"));
+		.subcommand(SubCommand::with_name("pentagonal").about("Calculate the pentagonal sequence"))
+		.subcommand(SubCommand::with_name("hexagonal").about("Calculate the hexagonal sequence"));
 	let matches = app.clone().get_matches();
 
 	let limit = match matches.value_of("limit").unwrap_or("30").parse::<u64>() {
@@ -51,6 +53,7 @@ fn main() {
 		Some("cube") => Cube::calculate(limit),
 		Some("triangular") => triangular::calculate(limit),
 		Some("pentagonal") => Pengagonal::calculate(limit),
+		Some("hexagonal") => Hexagonal::calculate(limit),
 		_ => {
 			app.print_help().unwrap();
 			println!("");
