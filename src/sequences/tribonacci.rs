@@ -1,5 +1,5 @@
-use std::mem::replace;
 use gmp::mpz::Mpz;
+use std::mem::replace;
 
 use crate::{progress::Progress, Sequence};
 

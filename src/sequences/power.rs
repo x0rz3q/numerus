@@ -1,5 +1,5 @@
-use gmp::mpz::Mpz;
 use crate::{progress::Progress, sequences::Sequence};
+use gmp::mpz::Mpz;
 
 fn calculate_power(limit: u64, power: u32) {
 	let progress = Progress::new(limit);

@@ -1,5 +1,5 @@
-use std::ops::{Div, Mul, Sub};
 use gmp::mpz::Mpz;
+use std::ops::{Div, Mul, Sub};
 
 use crate::{progress::Progress, sequences::Sequence};
 

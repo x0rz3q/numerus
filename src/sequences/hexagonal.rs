@@ -1,5 +1,5 @@
-use gmp::mpz::Mpz;
 use crate::{progress::Progress, sequences::Sequence};
+use gmp::mpz::Mpz;
 
 pub struct Hexagonal;
 impl Sequence for Hexagonal {
