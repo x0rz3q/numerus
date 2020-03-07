@@ -47,7 +47,7 @@ fn main() {
 	};
 
 	match matches.subcommand_name() {
-		Some("fibonacci") => Fibonacci::calculate(10),
+		Some("fibonacci") => Fibonacci::calculate(limit),
 		Some("tribonacci") => Tribonacci::calculate(limit),
 		Some("square") => Square::calculate(limit),
 		Some("cube") => Cube::calculate(limit),
