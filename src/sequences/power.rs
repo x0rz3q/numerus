@@ -1,13 +1,10 @@
-extern crate num_bigint;
-use num_bigint::BigUint;
-use num_traits::pow::Pow;
-
 use crate::{progress::Progress, sequences::Sequence};
+use gmp::mpz::Mpz;
 
-fn calculate_power(limit: u64, power: u64) {
+fn calculate_power(limit: u64, power: u32) {
 	let progress = Progress::new(limit);
 	for i in 0..limit {
-		println!("{}", BigUint::from(i).pow(power));
+		println!("{}", Mpz::from(i).pow(power));
 		progress.inc();
 	}
 

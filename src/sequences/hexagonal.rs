@@ -1,7 +1,5 @@
-extern crate num_bigint;
-use num_bigint::BigUint;
-
 use crate::{progress::Progress, sequences::Sequence};
+use gmp::mpz::Mpz;
 
 pub struct Hexagonal;
 impl Sequence for Hexagonal {
@@ -10,11 +8,11 @@ impl Sequence for Hexagonal {
 
 		// Base case
 		println!("{}", 0);
-		let two = BigUint::from(2 as u8);
+		let two = Mpz::from_str_radix("2", 10).unwrap();
 		for i in 1..limit {
-			let n = BigUint::from(i);
-			let two_n: BigUint = n.clone() * &two;
-			let result: BigUint = n * (&two_n - (1 as u8));
+			let n = Mpz::from(i);
+			let two_n: Mpz = n.clone() * two.clone();
+			let result: Mpz = n * (two_n - Mpz::one());
 
 			println!("{}", result);
 		}
