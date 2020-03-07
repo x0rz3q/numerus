@@ -1,7 +1,5 @@
-extern crate num_bigint;
-use num_bigint::BigUint;
-use num_traits::{One, Zero};
 use std::mem::replace;
+use gmp::mpz::Mpz;
 
 use crate::{progress::Progress, sequences::Sequence};
 
@@ -9,8 +7,8 @@ pub struct Fibonacci;
 impl Sequence for Fibonacci {
 	fn calculate(limit: u64) {
 		let progress = Progress::new(limit);
-		let mut first: BigUint = Zero::zero();
-		let mut second: BigUint = One::one();
+		let mut first = Mpz::from_str_radix("0", 10).unwrap(); 
+		let mut second = Mpz::from_str_radix("1", 10).unwrap();
 
 		println!("{}", first);
 		println!("{}", second);

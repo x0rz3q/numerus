@@ -8,11 +8,6 @@ use std::process::exit;
 
 use sequences::{
 	fibonacci::Fibonacci,
-	hexagonal::Hexagonal,
-	pentagonal::Pengagonal,
-	power::{Cube, Square},
-	triangular,
-	tribonacci::Tribonacci,
 	Sequence,
 };
 
@@ -47,13 +42,7 @@ fn main() {
 	};
 
 	match matches.subcommand_name() {
-		Some("fibonacci") => Fibonacci::calculate(10),
-		Some("tribonacci") => Tribonacci::calculate(limit),
-		Some("square") => Square::calculate(limit),
-		Some("cube") => Cube::calculate(limit),
-		Some("triangular") => triangular::calculate(limit),
-		Some("pentagonal") => Pengagonal::calculate(limit),
-		Some("hexagonal") => Hexagonal::calculate(limit),
+		Some("fibonacci") => Fibonacci::calculate(limit),
 		_ => {
 			app.print_help().unwrap();
 			println!("");
